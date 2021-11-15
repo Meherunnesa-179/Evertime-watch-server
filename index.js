@@ -37,10 +37,8 @@ async function run(){
 
       app.get('/singleProducts/:id' , async(req , res) => {
         const id = req.params.id;
-        console.log(id);
         const query = {_id: ObjectId(id)};
         const product = await productsCollection.findOne(query);
-        console.log(product);
         res.send(product);
     })
 
@@ -108,14 +106,12 @@ app.put("/statusUpdate/:id", async (req, res) => {
     },
   });
   res.send(result);
-  console.log(result);
 });
 
 // save user
 app.post('/users', async (req, res) => {
   const user = req.body;
   const result = await usersCollection.insertOne(user);
-  console.log(result);
   res.json(result);
 });
 
@@ -134,9 +130,6 @@ app.put('/users', async (req, res) => {
     const id = req.params.id;
     const query = { _id: ObjectId(id) };
     const result = await productsCollection.deleteOne(query);
-
-    console.log('deleting user with id ', result);
-
     res.json(result);
 })
 
@@ -150,7 +143,6 @@ app.put('/users', async (req, res) => {
     const documents = await usersCollection.updateOne(filter, {
       $set: { role: "admin" },
     });
-    console.log(documents);
   }
  })
 // check admin or not
@@ -158,7 +150,6 @@ app.get("/checkAdmin/:email", async (req, res) => {
   const result = await usersCollection
     .find({ email: req.params.email })
     .toArray();
-  console.log(result);
   res.send(result);
 });
 
