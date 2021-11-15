@@ -1,6 +1,6 @@
 # Getting Started with "Evertime-watch"
 
-# livesite : " "
+# livesite : "https://gracious-snyder-e2cf73.netlify.app/ "
 
 ## Details
 * This is a sample website of Men's watch
